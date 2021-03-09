@@ -21,8 +21,6 @@ public class EmployeeService {
         this.employeeRepo = employeeRepo;
     }
 
-
-
     public Employee addEmployee(Employee employee){
         employee.setEmployeeCode(UUID.randomUUID().toString());
         return employeeRepo.save(employee);
@@ -36,13 +34,15 @@ public class EmployeeService {
         return employeeRepo.save(employee);
     }
 
-//    public void deleteEmployee(Long id)
-//    {
-//        employeeRepo.deleteEmployeeById(id);
-//    }
-//
-//    public Employee findEmployeeById(Long id)
-//    {
-//       return employeeRepo.findEmployeeBydId(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
-//    }
+    public void deleteEmployee(Long id)
+    {
+        employeeRepo.deleteEmployeeById(id);
+       // employeeRepo.deleteById(id);
+    }
+
+    public Employee findEmployeeById(Long id)
+    {
+       return employeeRepo.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
+       // return employeeRepo.findById(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
+    }
 }
